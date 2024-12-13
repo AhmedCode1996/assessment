@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "pnpm exec prettier . --write"
+    "format": "pnpm exec prettier . --write",
+    "prepare": "husky"
   },
   "dependencies": {
     "@mui/material": "^6.2.0",
@@ -26,6 +27,7 @@
     "eslint": "^9",
     "eslint-config-next": "15.1.0",
     "eslint-config-prettier": "^9.1.0",
+    "husky": "^9.1.7",
     "mini-css-extract-plugin": "^2.9.2",
     "prettier": "3.4.2",
     "typescript": "^5"
