@@ -45,7 +45,7 @@ export function SearchBar({
       >
         <MenuItem value="all">All Categories</MenuItem>
         {categories.map((cat) => (
-          <MenuItem key={cat.id} value={cat.name}>
+          <MenuItem key={cat.id} value={cat.id.toString()}>
             {cat.name}
           </MenuItem>
         ))}
