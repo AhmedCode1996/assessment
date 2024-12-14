@@ -1,3 +1,5 @@
+import Content from "@/components/Content";
+
 export default function Home() {
-  return <h2>hello world</h2>;
+  return <Content />;
 }
