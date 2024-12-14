@@ -11,6 +11,7 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@mui/icons-material": "^6.2.0",
     "@mui/material": "^6.2.0",
     "@mui/material-pigment-css": "^6.2.0",
     "@pigment-css/react": "^0.0.28",
