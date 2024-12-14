@@ -1,5 +1,8 @@
 import Content from "@/components/Content";
+import { getImages } from "./actions";
 
-export default function Home() {
-  return <Content />;
+export default async function Home() {
+  const initialImages = await getImages();
+
+  return <Content initialImages={initialImages} />;
 }

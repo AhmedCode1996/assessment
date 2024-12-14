@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 
 import { useCategories } from "@/hooks/queries/useCategories";
-import { useImages } from "@/hooks/queries/useImages";
 
 import { Box, Button, Container, Tab, Tabs, Typography } from "@mui/material";
 import Categories from "./Categories";
@@ -12,9 +11,14 @@ import Images from "./Images";
 import { SearchBar } from "./SearchBar";
 
 import { useDeleteImage } from "@/hooks/mutations";
+import { IImage } from "@/lib/types/image";
 import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
+import { useImages } from "@/hooks/queries/useImages";
 
-const Content = () => {
+interface ContentProps {
+  initialImages: IImage[];
+}
+const Content = ({ initialImages }: ContentProps) => {
   const [activeTab, setActiveTab] = useState(0);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -22,7 +26,10 @@ const Content = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const [openUploadModal, setOpenUploadModal] = useState(false);
 
-  const { images, isImagesLoading } = useImages();
+  // Params should be passed, but the backend doesn't support it yet.
+  const { data: imagesData = [], isLoading } = useImages({
+    initialData: initialImages,
+  });
   const { categories } = useCategories();
 
   const deleteImageMutation = useDeleteImage();
@@ -42,7 +49,8 @@ const Content = () => {
     setActiveTab(newValue);
   };
 
-  const filteredImages = images.filter((image) => {
+  // we are using client side filtering because backend doesn't support it yet.
+  const filteredImages = imagesData.filter((image) => {
     const matchesSearch = image.name
       .toLowerCase()
       .includes(searchQuery.toLowerCase());
@@ -93,7 +101,7 @@ const Content = () => {
 
           <Images
             images={filteredImages}
-            isLoading={isImagesLoading}
+            isLoading={isLoading}
             onDeleteImage={(imageId) => {
               setSelectedImage(imageId);
               setOpenDeleteDialog(true);
