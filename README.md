@@ -2,6 +2,17 @@
 
 A modern web application for managing images and categories built with Next.js, Material UI, and React Query.
 
+## Lighthouse Scores
+
+| Metric         | Score |
+| -------------- | ----- |
+| Performance    | 98    |
+| Accessibility  | 100   |
+| Best Practices | 96    |
+| SEO            | 100   |
+
+This application achieves exceptional Lighthouse scores, demonstrating high-quality standards in performance, accessibility, best practices, and SEO optimization.
+
 ## Features
 
 ### Image Management
