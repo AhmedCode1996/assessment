@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "@mui/material-pigment-css/styles.css";
+import Providers from "@/lib/queryProvider";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -21,7 +22,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${roboto.variable}`}>{children}</body>
+      <body className={`${roboto.variable}`}>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }
