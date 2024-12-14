@@ -3,7 +3,15 @@ import { withPigment } from "@pigment-css/nextjs-plugin";
 import { createTheme } from "@mui/material";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "picsum.photos",
+        pathname: "/**",
+      },
+    ],
+  },
 };
 
 export default withPigment(nextConfig, {
