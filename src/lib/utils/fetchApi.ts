@@ -1,4 +1,4 @@
-const BASE_URL = "https://my-json-server.typicode.com/MostafaKMilly/demo";
+import { BASE_URL } from "../api/endpoint";
 
 export async function fetchApi<T>(
   endpoint: string,
