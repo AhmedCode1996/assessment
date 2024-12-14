@@ -1,15 +1,17 @@
 import { getCategories } from "@/app/actions";
-import { useQuery } from "@tanstack/react-query";
+import { Category } from "@/lib/types/category";
+import { useQuery, QueryOptions } from "@tanstack/react-query";
 
-export function useCategories() {
-  const {
-    data: categories = [],
-    isPending: isCategoriesPending,
-    isLoading: isCategoriesLoading,
-  } = useQuery({
-    queryKey: ["categories"],
+interface UseCategories extends QueryOptions<Category[]> {
+  params?: Record<string, string | null>;
+}
+
+export function useCategories({ params, ...queryProps }: UseCategories) {
+  const query = useQuery({
+    queryKey: ["categories", params],
     queryFn: getCategories,
+    ...queryProps,
   });
 
-  return { categories, isCategoriesLoading, isCategoriesPending };
+  return query;
 }
