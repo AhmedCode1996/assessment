@@ -6,6 +6,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { IImage } from "@/lib/types/image";
 import { LoadingSkeleton } from "./LoadingSkeleton";
 import Image from "next/image";
+import { useCategories } from "@/hooks/queries/useCategories";
 
 interface ImageCardProps {
   image: IImage;
@@ -14,6 +15,10 @@ interface ImageCardProps {
 }
 
 export function ImageCard({ image, onDelete, isLoading }: ImageCardProps) {
+  const { categories } = useCategories();
+  const category = categories.find((cat) => cat.id === image.categoryId);
+  const categoryName = category?.name || "Unknown Category";
+
   if (isLoading) {
     return <LoadingSkeleton />;
   }
@@ -28,7 +33,7 @@ export function ImageCard({ image, onDelete, isLoading }: ImageCardProps) {
           {image.name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Category: {image.categoryId}
+          Category: {categoryName}
         </Typography>
         <Typography variant="body2" color="text.secondary">
           Uploaded: {new Date(image.uploadDate).toLocaleDateString()}
