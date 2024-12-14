@@ -125,6 +125,7 @@ const Content = ({ initialImages }: ContentProps) => {
         open={openDeleteDialog}
         onClose={() => setOpenDeleteDialog(false)}
         onConfirm={handleDeleteImage}
+        entityName="image"
       />
 
       <ImageUploadModal
