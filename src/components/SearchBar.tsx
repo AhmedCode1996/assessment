@@ -36,7 +36,9 @@ export function SearchBar({
       }}
     >
       <TextField
+        id="search-images"
         label="Search images"
+        name="searchQuery"
         variant="outlined"
         size="small"
         value={localSearchQuery}
@@ -44,8 +46,10 @@ export function SearchBar({
         sx={{ width: 300 }}
       />
       <TextField
-        select
+        id="filter-category"
         label="Category"
+        name="filterCategory"
+        select
         value={selectedCategory}
         onChange={(e) => onCategoryChange(e.target.value)}
         size="small"

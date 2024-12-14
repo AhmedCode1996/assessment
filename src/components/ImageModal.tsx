@@ -108,7 +108,9 @@ export default function ImageUploadModal({
         <DialogContent>
           <Box sx={{ pt: 2, display: "flex", flexDirection: "column", gap: 2 }}>
             <TextField
+              id="image-name"
               label="Image Name"
+              name="imageName"
               fullWidth
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -118,8 +120,10 @@ export default function ImageUploadModal({
             />
 
             <TextField
-              select
+              id="image-category"
               label="Category"
+              name="imageCategory"
+              select
               fullWidth
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
@@ -134,10 +138,16 @@ export default function ImageUploadModal({
               ))}
             </TextField>
 
-            <Button variant="outlined" component="label" fullWidth>
+            <Button
+              id="image-upload-button"
+              variant="outlined"
+              component="label"
+              fullWidth
+            >
               Select Image
               <input
                 type="file"
+                name="imageFile"
                 hidden
                 accept="image/*"
                 onChange={handleFileSelect}

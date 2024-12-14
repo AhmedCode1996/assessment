@@ -93,8 +93,10 @@ export default function CategoryModal({
         <DialogContent>
           <Box sx={{ pt: 2 }}>
             <TextField
-              autoFocus
+              id="category-name"
               label="Category Name"
+              name="categoryName"
+              autoFocus
               fullWidth
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -104,7 +106,9 @@ export default function CategoryModal({
             />
 
             <TextField
+              id="category-description"
               label="Description"
+              name="categoryDescription"
               fullWidth
               value={description}
               onChange={(e) => setDescription(e.target.value)}
