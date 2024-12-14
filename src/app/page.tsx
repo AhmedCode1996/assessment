@@ -1,8 +1,9 @@
 import Content from "@/components/Content";
-import { getImages } from "./actions";
+import { getCategories, getImages } from "./actions";
 
 export default async function Home() {
   const initialImages = await getImages();
+  const initialCategories = await getCategories();
 
-  return <Content initialImages={initialImages} />;
+  return <Content initialData={{ initialImages, initialCategories }} />;
 }

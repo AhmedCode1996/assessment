@@ -3,14 +3,15 @@
 import { Box, Paper } from "@mui/material";
 import { ImageCard } from "./ImageCard";
 import { IImage } from "@/lib/types/image";
+import { Category } from "@/lib/types/category";
 
 interface ImagesProps {
   images: IImage[];
-  isLoading: boolean;
   onDeleteImage: (imageId: number) => void;
+  initialCategories: Category[];
 }
 
-function Images({ images, isLoading, onDeleteImage }: ImagesProps) {
+function Images({ images, onDeleteImage, initialCategories }: ImagesProps) {
   return (
     <Paper sx={{ p: 3 }}>
       <Box
@@ -23,10 +24,10 @@ function Images({ images, isLoading, onDeleteImage }: ImagesProps) {
       >
         {images.map((image) => (
           <ImageCard
+            initialCategories={initialCategories}
             key={image.id}
             image={image}
             onDelete={() => onDeleteImage(image.id)}
-            isLoading={isLoading}
           />
         ))}
       </Box>

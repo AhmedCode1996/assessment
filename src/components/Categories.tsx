@@ -10,7 +10,11 @@ import { CategoryItem } from "./CategoryItem";
 import CategoryModal from "./CategoryModal";
 import { DeleteConfirmationDialog } from "./DeleteConfirmationDialog";
 
-function Categories() {
+interface CategoriesProps {
+  categoriesData: Category[];
+}
+
+function Categories({ categoriesData }: CategoriesProps) {
   const [openModal, setOpenModal] = useState(false);
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<Category | null>(
@@ -19,7 +23,9 @@ function Categories() {
   const [isEdit, setIsEdit] = useState(false);
   const deleteCategoryMutation = useDeleteCategory();
 
-  const { categories, isCategoriesLoading } = useCategories();
+  const { data: categories, isLoading: isCategoriesLoading } = useCategories({
+    initialData: categoriesData,
+  });
 
   const handleEdit = (category: Category) => {
     setSelectedCategory(category);
@@ -82,7 +88,7 @@ function Categories() {
             gap: 2,
           }}
         >
-          {categories.map((category) => (
+          {categories?.map((category) => (
             <CategoryItem
               key={category.id}
               category={category}

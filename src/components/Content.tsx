@@ -14,23 +14,31 @@ import { useDeleteImage } from "@/hooks/mutations";
 import { IImage } from "@/lib/types/image";
 import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
 import { useImages } from "@/hooks/queries/useImages";
+import { Category } from "@/lib/types/category";
 
 interface ContentProps {
-  initialImages: IImage[];
+  initialData: {
+    initialImages: IImage[];
+    initialCategories: Category[];
+  };
 }
-const Content = ({ initialImages }: ContentProps) => {
+const Content = ({
+  initialData: { initialCategories, initialImages },
+}: ContentProps) => {
   const [activeTab, setActiveTab] = useState(0);
   const [searchQuery, setSearchQuery] = useState("");
+  const [openUploadModal, setOpenUploadModal] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
-  const [openUploadModal, setOpenUploadModal] = useState(false);
 
   // Params should be passed, but the backend doesn't support it yet.
-  const { data: imagesData = [], isLoading } = useImages({
+  const { data: imagesData = [] } = useImages({
     initialData: initialImages,
   });
-  const { categories } = useCategories();
+  const { data: categoriesData = [] } = useCategories({
+    initialData: initialCategories,
+  });
 
   const deleteImageMutation = useDeleteImage();
 
@@ -95,10 +103,10 @@ const Content = ({ initialImages }: ContentProps) => {
           >
             <SearchBar
               searchQuery={searchQuery}
-              selectedCategory={selectedCategory}
-              categories={categories}
               onSearchChange={setSearchQuery}
+              selectedCategory={selectedCategory}
               onCategoryChange={setSelectedCategory}
+              categories={categoriesData}
             />
             <Button
               variant="contained"
@@ -110,8 +118,8 @@ const Content = ({ initialImages }: ContentProps) => {
           </Box>
 
           <Images
+            initialCategories={categoriesData}
             images={filteredImages}
-            isLoading={isLoading}
             onDeleteImage={(imageId) => {
               setSelectedImage(imageId);
               setOpenDeleteDialog(true);
@@ -120,7 +128,7 @@ const Content = ({ initialImages }: ContentProps) => {
         </>
       )}
 
-      {activeTab === 1 && <Categories />}
+      {activeTab === 1 && <Categories categoriesData={categoriesData} />}
 
       <DeleteConfirmationDialog
         open={openDeleteDialog}
