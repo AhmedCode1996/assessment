@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "@mui/material-pigment-css/styles.css";
-import Providers from "@/lib/queryProvider";
+import Providers from "@/lib/providers/queryProvider";
 
 const roboto = Roboto({
   subsets: ["latin"],
