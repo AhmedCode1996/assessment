@@ -26,7 +26,15 @@ export function SearchBar({
     onSearchChange(debouncedSearchQuery);
   }, [debouncedSearchQuery, onSearchChange]);
   return (
-    <Box sx={{ mb: 4, display: "flex", gap: 2 }}>
+    <Box
+      sx={{
+        mb: 4,
+        display: "flex",
+        alignItems: "center",
+        flexWrap: "wrap",
+        gap: 2,
+      }}
+    >
       <TextField
         label="Search images"
         variant="outlined"

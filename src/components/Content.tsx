@@ -71,7 +71,7 @@ const Content = ({ initialImages }: ContentProps) => {
 
   return (
     <Container maxWidth="lg" sx={{ py: 4 }}>
-      <Typography variant="h4" component="h1" gutterBottom>
+      <Typography variant="h5" component="h1" gutterBottom>
         Image Management System
       </Typography>
 
@@ -90,6 +90,7 @@ const Content = ({ initialImages }: ContentProps) => {
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
+              flexWrap: "wrap",
             }}
           >
             <SearchBar
