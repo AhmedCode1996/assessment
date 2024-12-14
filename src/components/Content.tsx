@@ -41,6 +41,15 @@ const Content = ({ initialImages }: ContentProps) => {
           setOpenDeleteDialog(false);
           setSelectedImage(null);
         },
+        onError: (error) => {
+          console.error("Failed to delete image:", error);
+          setOpenDeleteDialog(false);
+          setSelectedImage(null);
+        },
+        onSettled: () => {
+          setOpenDeleteDialog(false);
+          setSelectedImage(null);
+        },
       });
     }
   };
