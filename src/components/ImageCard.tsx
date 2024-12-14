@@ -32,12 +32,11 @@ export function ImageCard({
           fill
           src={image.url}
           alt={image.name}
-          loading="lazy"
           style={{ objectFit: "cover" }}
         />
       </Box>
       <CardContent>
-        <Typography variant="h6" gutterBottom>
+        <Typography variant="h5" component="h2" gutterBottom>
           {image.name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
