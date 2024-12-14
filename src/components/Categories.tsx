@@ -45,8 +45,7 @@ function Categories({ categoriesData }: CategoriesProps) {
           setOpenDeleteDialog(false);
           setSelectedCategory(null);
         },
-        onError: (error) => {
-          console.error("Failed to delete category:", error);
+        onError: () => {
           setOpenDeleteDialog(false);
           setSelectedCategory(null);
         },

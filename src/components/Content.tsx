@@ -49,8 +49,7 @@ const Content = ({
           setOpenDeleteDialog(false);
           setSelectedImage(null);
         },
-        onError: (error) => {
-          console.error("Failed to delete image:", error);
+        onError: () => {
           setOpenDeleteDialog(false);
           setSelectedImage(null);
         },

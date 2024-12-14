@@ -94,9 +94,6 @@ export default function ImageUploadModal({
         onSuccess: () => {
           handleClose();
         },
-        onError: (error) => {
-          console.error("Upload failed:", error);
-        },
       },
     );
   };
