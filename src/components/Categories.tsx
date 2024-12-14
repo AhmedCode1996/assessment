@@ -41,6 +41,12 @@ function Categories() {
         },
         onError: (error) => {
           console.error("Failed to delete category:", error);
+          setOpenDeleteDialog(false);
+          setSelectedCategory(null);
+        },
+        onSettled: () => {
+          setOpenDeleteDialog(false);
+          setSelectedCategory(null);
         },
       });
     }
@@ -71,7 +77,8 @@ function Categories() {
         <Box
           sx={{
             display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
+            gridTemplateColumns:
+              "repeat(auto-fill, minmax(min(100%, 300px), 1fr))",
             gap: 2,
           }}
         >
@@ -97,6 +104,7 @@ function Categories() {
           open={openDeleteDialog}
           onClose={() => setOpenDeleteDialog(false)}
           onConfirm={handleConfirmDelete}
+          entityName="category"
         />
       </Box>
     </Paper>
