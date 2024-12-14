@@ -1,5 +1,5 @@
+import { deleteImage } from "@/lib/services/services";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { deleteImage } from "@/app/actions";
 
 export function useDeleteImage() {
   const queryClient = useQueryClient();

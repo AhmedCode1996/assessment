@@ -1,5 +1,5 @@
+import { deleteCategory } from "@/lib/services/services";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { deleteCategory } from "@/app/actions";
 
 export function useDeleteCategory() {
   const queryClient = useQueryClient();

@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { updateCategory } from "@/app/actions";
 import { Category } from "@/lib/types/category";
+import { updateCategory } from "@/lib/services/services";
 
 interface UpdateCategoryVariables {
   id: number;
