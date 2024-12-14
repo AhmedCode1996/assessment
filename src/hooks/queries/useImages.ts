@@ -1,15 +1,16 @@
 import { getImages } from "@/app/actions";
-import { useQuery } from "@tanstack/react-query";
+import { IImage } from "@/lib/types/image";
+import { QueryOptions, useQuery } from "@tanstack/react-query";
 
-export function useImages() {
-  const {
-    data: images = [],
-    isPending: isImagesPending,
-    isLoading: isImagesLoading,
-  } = useQuery({
-    queryKey: ["images"],
+interface UseImages extends QueryOptions<IImage[]> {
+  params?: Record<string, string | null>;
+}
+export function useImages({ params, ...queryProps }: UseImages) {
+  const query = useQuery({
+    queryKey: ["images", params],
     queryFn: getImages,
+    ...queryProps,
   });
 
-  return { images, isImagesLoading, isImagesPending };
+  return query;
 }
