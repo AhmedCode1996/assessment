@@ -1,36 +1,126 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Image Management Platform
 
-## Getting Started
+A modern web application for managing images and categories built with Next.js, Material UI, and React Query.
 
-First, run the development server:
+## Features
+
+### Image Management
+
+- Upload images with metadata (name, category, size, resolution)
+- View images in a responsive gallery layout
+- Delete images with confirmation
+- Image preview during upload
+- File information display (size, resolution)
+
+### Category Management
+
+- Create new categories with name and description
+- View all categories in a grid layout
+- Edit existing categories
+- Delete categories with confirmation dialog
+
+### Search and Filtering
+
+- Search images by name with debounced input
+- Filter images by category
+- Client-side filtering for smooth user experience
+
+### UI/UX Features
+
+- Responsive design for all screen sizes
+- Loading states with skeleton placeholders
+- Error handling with user-friendly messages
+- Modal dialogs for forms and confirmations
+- Tab-based navigation between images and categories
+
+### Technical Features
+
+- Server-side rendering with Next.js App Router
+- Efficient data fetching and caching with React Query
+- Material UI components for consistent design
+- TypeScript for type safety
+- Husky for git hooks
+- ESLint and Prettier for code quality
+
+## Prerequisites
+
+- Node.js (v18 or higher)
+- pnpm package manager
+
+## Installation
+
+1. Clone the repository:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+git clone https://github.com/AhmedCode1996/assessment.git
+```
+
+2. Install dependencies:
+
+```bash
+pnpm install
+```
+
+## Development
+
+Run the development server:
+
+```bash
 pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Available Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `pnpm dev` - Start development server
+- `pnpm build` - Build for production
+- `pnpm start` - Start production server
+- `pnpm lint` - Run ESLint
+- `pnpm format` - Format code with Prettier
 
-## Learn More
+## Dependencies
 
-To learn more about Next.js, take a look at the following resources:
+### Core
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Next.js v15.1.0
+- React v19.0.0
+- React DOM v19.0.0
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### UI
 
-## Deploy on Vercel
+- Material UI v6.2.0
+- MUI Icons v6.2.0
+- Material UI Pigment CSS v6.2.0
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### State Management & Data Fetching
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- TanStack React Query v5.62.7
+
+### Development Tools
+
+- TypeScript v5
+- ESLint v9
+- Prettier v3.4.2
+- Husky v9.1.7
+
+## Project Structure
+
+```
+src/
+├── app/
+│   ├── actions.ts        # Server actions
+│   ├── layout.tsx        # Root layout
+│   └── page.tsx          # Home page
+├── components/          # React components
+├── hooks/              # Custom hooks
+│   ├── common/         # Common/shared hooks
+│   ├── mutations/      # React Query mutations
+│   └── queries/        # React Query queries
+├── lib/               # Library code
+│   ├── api/           # API related code
+│   ├── providers/     # React providers
+│   ├── services/      # Service layer
+│   ├── types/         # TypeScript types
+│   └── utils/         # Utility functions
+```
