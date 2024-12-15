@@ -23,7 +23,7 @@ function Categories({ categoriesData }: CategoriesProps) {
   const [isEdit, setIsEdit] = useState(false);
   const deleteCategoryMutation = useDeleteCategory();
 
-  const { data: categories, isLoading: isCategoriesLoading } = useCategories({
+  const { data: categories } = useCategories({
     initialData: categoriesData,
   });
 
@@ -93,7 +93,6 @@ function Categories({ categoriesData }: CategoriesProps) {
               category={category}
               onEdit={() => handleEdit(category)}
               onDelete={() => handleDelete(category)}
-              isLoading={isCategoriesLoading}
             />
           ))}
         </Box>

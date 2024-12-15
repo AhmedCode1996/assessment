@@ -1,26 +1,20 @@
 "use client";
-import { Paper, Typography, Box, IconButton } from "@mui/material";
-import EditIcon from "@mui/icons-material/Edit";
-import DeleteIcon from "@mui/icons-material/Delete";
 import { Category } from "@/lib/types/category";
-import { LoadingSkeleton } from "./LoadingSkeleton";
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
+import { Box, IconButton, Paper, Typography } from "@mui/material";
 
 interface CategoryItemProps {
   category: Category;
   onEdit: () => void;
   onDelete: () => void;
-  isLoading: boolean;
 }
 
 export function CategoryItem({
   category,
   onEdit,
   onDelete,
-  isLoading,
 }: CategoryItemProps) {
-  if (isLoading) {
-    return <LoadingSkeleton />;
-  }
   return (
     <Paper
       sx={{

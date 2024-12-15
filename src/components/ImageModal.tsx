@@ -98,6 +98,14 @@ export default function ImageUploadModal({
     );
   };
 
+  const isPending =
+    !name.trim() ||
+    !selectedCategory ||
+    !file ||
+    !size ||
+    !resolution ||
+    uploadImageMutation.isPending;
+
   return (
     <Dialog open={open} onClose={handleClose} maxWidth="sm" fullWidth>
       <form onSubmit={handleSubmit}>
@@ -181,18 +189,7 @@ export default function ImageUploadModal({
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button
-            type="submit"
-            variant="contained"
-            disabled={
-              !name.trim() ||
-              !selectedCategory ||
-              !file ||
-              !size ||
-              !resolution ||
-              uploadImageMutation.isPending
-            }
-          >
+          <Button type="submit" variant="contained" disabled={isPending}>
             {uploadImageMutation.isPending ? "Uploading..." : "Upload"}
           </Button>
         </DialogActions>
